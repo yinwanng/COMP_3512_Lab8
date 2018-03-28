@@ -6,7 +6,8 @@ int main()
 {
 	FixedList<int, 5> test;
 
-	cout << test.get(5) << endl;
+	cout << test.get(0) << endl;
+	//cout << test[0] << endl;
 
 
 	system("pause");

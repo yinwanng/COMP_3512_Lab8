@@ -6,7 +6,7 @@ public:
 	FixedList();
 	~FixedList();
 	const T& get(unsigned int index) const;
-	//T& operator[](unsigned int index);
+	T& operator[](unsigned int index);
 	//int getFirstIndex(const T& t) const;
 	//size_t size() const;
 	bool add(const T& t);
@@ -40,4 +40,15 @@ inline const T & FixedList<T, N>::get(unsigned int index) const
 	}
 }
 
+template<class T, size_t N>
+inline T & FixedList<T, N>::operator[](unsigned int index)
+{
+	if (index < size)
+	{
+		return contents[index];
+	}
+	else {
+		throw std::range_error("Out of range.");
+	}
+}
 
