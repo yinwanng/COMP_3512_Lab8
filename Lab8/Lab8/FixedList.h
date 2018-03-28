@@ -59,6 +59,14 @@ inline int FixedList<T, N>::getFirstIndex(const T & t) const
 	if (size > 0) {
 		return 0;
 	}
-	return -1;
-	
+	return -1;	
 }
+
+
+template<class T, size_t N>
+inline size_t FixedList<T, N>::size() const
+{
+	return size;
+}
+
+
