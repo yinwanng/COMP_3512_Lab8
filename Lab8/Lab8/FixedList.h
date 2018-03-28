@@ -69,4 +69,12 @@ inline size_t FixedList<T, N>::size() const
 	return size;
 }
 
+template<class T, size_t N>
+inline size_t FixedList<T, N>::capacity() const
+{
+	return capacity;
+}
+
+
+
 
