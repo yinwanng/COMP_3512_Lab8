@@ -137,5 +137,17 @@ namespace UnitTest1
 			string s = "Chris";
 			Assert::AreEqual(s, list2.remove("Chris"));
 		}
+
+
+		TEST_METHOD(TestRemove3)
+		{
+			string s = "";
+			Assert::AreEqual(s, list2.remove("Kevin"));
+		}
+
+		TEST_METHOD(TestRemove4)
+		{
+			Assert::AreEqual(0.0, list1.remove(345345));
+		}
 	};
 }

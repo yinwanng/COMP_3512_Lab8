@@ -138,7 +138,7 @@ inline T FixedList<T, N>::remove(const T & t)
 		--cSize;
 		return t;
 	}
-	return NULL;
+	return T();
 }
 
 
