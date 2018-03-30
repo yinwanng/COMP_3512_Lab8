@@ -18,6 +18,8 @@ private:
 	size_t cCapacity;
 };
 
+// Constructor
+// Initialize size to 0 and capacity to N
 template<class T, size_t N>
 inline FixedList<T, N>::FixedList()
 {
@@ -25,11 +27,17 @@ inline FixedList<T, N>::FixedList()
 	cCapacity = N;
 }
 
+// Empty Destructor
 template<class T, size_t N>
 inline FixedList<T, N>::~FixedList()
 {
 }
 
+// Get
+// Param: index
+// PRE: index must be in range
+// POST: the value from the index
+// Return: the value from the index
 template<class T, size_t N>
 inline const T & FixedList<T, N>::get(unsigned int index) const
 {
@@ -42,6 +50,11 @@ inline const T & FixedList<T, N>::get(unsigned int index) const
 	}
 }
 
+// []
+// Param: index
+// PRE: index must be in range
+// POST: the value from the index
+// Return: the value from the index
 template<class T, size_t N>
 inline T & FixedList<T, N>::operator[](unsigned int index)
 {
@@ -54,6 +67,12 @@ inline T & FixedList<T, N>::operator[](unsigned int index)
 	}
 }
 
+
+// Gets the first index of the first occurence
+// Param: the value
+// PRE: the index will be in range
+// POST: the index of the first occurence
+// Return: the index of the first occurence otherwise return -1 if not found
 template<class T, size_t N>
 inline int FixedList<T, N>::getFirstIndex(const T & t) const
 {
@@ -69,19 +88,27 @@ inline int FixedList<T, N>::getFirstIndex(const T & t) const
 	return -1;	
 }
 
-
+// Size
+// Returns the current size of the FixedList
 template<class T, size_t N>
 inline size_t FixedList<T, N>::size() const
 {
 	return cSize;
 }
 
+// Capacity
+// Returns the capacity of the FixedList
 template<class T, size_t N>
 inline size_t FixedList<T, N>::capacity() const
 {
 	return cCapacity;
 }
 
+// Add
+// Param: the value
+// PRE: Must be the same type of the FixedList
+// POST: The value will be added if the size is less than or equal to the capacity
+// Return: true if the value has been added or false if it has not
 template<class T, size_t N>
 inline bool FixedList<T, N>::add(const T & t)
 {
@@ -93,6 +120,11 @@ inline bool FixedList<T, N>::add(const T & t)
 	return false;
 }
 
+// Remove
+// Param: the value
+// PRE: The FixedList must not be empty
+// POST: the value will be removed 
+// Return: the value if it has been removed and null if it has not been removed
 template<class T, size_t N>
 inline T FixedList<T, N>::remove(const T & t)
 {
