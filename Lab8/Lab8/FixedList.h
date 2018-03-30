@@ -11,17 +11,18 @@ public:
 	size_t size() const;
 	size_t capacity() const;
 	bool add(const T& t);
-	//T remove(const T& t);
+	T remove(const T& t);
 private:
 	T contents [N];
-	size_t size;
-	size_t capacity = N;
+	size_t cSize;
+	size_t cCapacity;
 };
 
 template<class T, size_t N>
 inline FixedList<T, N>::FixedList()
 {
-	size = 0;
+	cSize = 0;
+	cCapacity = N;
 }
 
 template<class T, size_t N>
@@ -32,7 +33,7 @@ inline FixedList<T, N>::~FixedList()
 template<class T, size_t N>
 inline const T & FixedList<T, N>::get(unsigned int index) const
 {
-	if (index < size)
+	if (index < cSize)
 	{
 		return contents[index];
 	}
@@ -44,7 +45,7 @@ inline const T & FixedList<T, N>::get(unsigned int index) const
 template<class T, size_t N>
 inline T & FixedList<T, N>::operator[](unsigned int index)
 {
-	if (index < size)
+	if (index < cSize)
 	{
 		return contents[index];
 	}
@@ -56,8 +57,14 @@ inline T & FixedList<T, N>::operator[](unsigned int index)
 template<class T, size_t N>
 inline int FixedList<T, N>::getFirstIndex(const T & t) const
 {
-	if (size > 0) {
-		return 0;
+	if (cSize > 0) {
+		for (int i = 0; i < cSize; i++)
+		{
+			if (contents[i] == t) 
+			{
+				return i;
+			}
+		}
 	}
 	return -1;	
 }
@@ -66,14 +73,42 @@ inline int FixedList<T, N>::getFirstIndex(const T & t) const
 template<class T, size_t N>
 inline size_t FixedList<T, N>::size() const
 {
-	return size;
+	return cSize;
 }
 
 template<class T, size_t N>
 inline size_t FixedList<T, N>::capacity() const
 {
-	return capacity;
+	return cCapacity;
 }
+
+template<class T, size_t N>
+inline bool FixedList<T, N>::add(const T & t)
+{
+	if (cSize < cCapacity)
+	{
+		contents[cSize++] = t;
+		return true;
+	}
+	return false;
+}
+
+template<class T, size_t N>
+inline T FixedList<T, N>::remove(const T & t)
+{
+	int index = getFirstIndex(t);
+
+	if (index >= 0) {
+		for (int i = index; i < cSize; i++) {
+			contents[i] = contents[i + 1];
+		}
+		--cSize;
+		return t;
+	}
+	return NULL;
+}
+
+
 
 
 
