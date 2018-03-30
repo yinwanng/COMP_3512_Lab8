@@ -1,4 +1,5 @@
 #pragma once
+#include <stddef.h>
 template <class T, size_t N>
 class FixedList
 {
